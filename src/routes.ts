@@ -1,4 +1,6 @@
 import { Router } from 'express';
+
+import { RepositoryController } from './controllers';
   
 class Routes {
 
@@ -10,6 +12,7 @@ class Routes {
     }
 
     initializeRoutes() {
+        this.routes.post('/repository', RepositoryController.store);
     }
 }
  
