@@ -1,4 +1,5 @@
-FROM node:alpine
+FROM node:10.20.0-stretch
+
 
 WORKDIR /usr/app
 
@@ -9,4 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
