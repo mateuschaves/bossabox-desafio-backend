@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add typescrypt -D
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\app\product\18.0.0\dbhomeXE\bin;C:\Users\Mateus Henrique\AppData\Local\Android\Sdk\platform-tools;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Users\Mateus Henrique\AppData\Local\Android\Sdk\tools;C:\Users\Mateus Henrique\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\TDM-GCC-64\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\src\flutter\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Android\Sdk\ndk;C:\ProgramData\chocolatey\lib\gradle\tools\gradle-6.0.1;C:\Users\Mateus Henrique\openssl\bin;C:\Users\Mateus Henrique\AppData\Local\jdk-11.0.2\bin;C:\Users\Mateus Henrique\.windows-build-tools\python27\;C:\Users\Mateus Henrique\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Mateus Henrique\AppData\Local\Yarn\bin;C:\Users\Mateus Henrique\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Mateus Henrique\AppData\Local\Microsoft\WindowsApps;C:\Users\Mateus Henrique\AppData\Local\GitHubDesktop\bin;C:\Users\Mateus Henrique\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\bin;;C:\Users\Mateus Henrique\AppData\Roaming\Composer\vendor\bin;C:\tools\dart-sdk\bin;C:\Users\Mateus Henrique\AppData\Roaming\Pub\Cache\bin;;C:\Program Files\JetBrains\DataGrip 2020.1\bin;
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  10.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/typescrypt: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66035:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140564:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141536:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141458:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1143:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

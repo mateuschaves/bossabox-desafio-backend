@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    command: npm start
+    container_name: "node_server"
+    ports: 
+      - "2000:3000"
+    volumes:
+      - .:/usr/app
+    links:
+      - db
+  db:
+    image: mongo:latest
+    ports:
+      - "8081:8081"
+    container_name: "db"
+    restart: always
+    volumes:
+      - ./data/db:/data/db
