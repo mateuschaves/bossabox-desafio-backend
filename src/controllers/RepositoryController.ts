@@ -23,6 +23,16 @@ class RepositoryController {
             return response.status(400).json(error);
         }
     }
+
+
+    async index(request: Request, response: Response) {
+        try {
+            const repositories = await Repository.find() || [];
+            if (repositories) return response.status(200).json(repositories);
+        } catch (error) {
+            return response.status(500).json(error);
+        }
+    }
 }
 
 export default new RepositoryController();

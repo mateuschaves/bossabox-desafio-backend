@@ -33,6 +33,41 @@ describe('Repository', () => {
         expect(response.body).toHaveProperty('error');
     });
 
+    it('should be able to list all repository registered', async () => {
+
+        const repository = {
+            "title": 'hotel',
+            "link": "https://github.com/typicode/hotel",
+            "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+            "tags": ["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+        }
+
+        await request(app)
+            .post('/repository')
+            .send(repository);
+
+        const response = await request(app)
+            .get('/repository');
+
+        expect(response.status).toBe(200);
+        expect(Array.isArray(response.body)).toBe(true);
+        expect(response.body).toHaveLength(1);
+        const [ firstElement ] =  response.body;
+        expect(firstElement).toHaveProperty('title', repository.title);
+        expect(firstElement).toHaveProperty('link', repository.link);
+        expect(firstElement).toHaveProperty('description', repository.description);
+        expect(firstElement).toHaveProperty('tags', repository.tags);
+    });
+
+    it('should not list repositories if there is no one registered', async () => {
+        const response = await request(app)
+            .get('/repository');
+
+        expect(response.status).toBe(200);
+        expect(Array.isArray(response.body)).toBe(true);
+        expect(response.body).toHaveLength(0);
+    });
+
     beforeEach( async () => {
         return new Promise( async (resolve, reject) => {
             const connection = await mongoose.connection.db;
