@@ -2,8 +2,6 @@ import request from 'supertest';
 import app from '../../src/app';
 
 import mongoose from 'mongoose';
-
-
 interface ITool {
     id: string,
     title: string;
@@ -172,6 +170,45 @@ describe('Tools', () => {
         expect(response.status).toBe(200);
         expect(Array.isArray(response.body)).toBe(true);
         expect(response.body).toHaveLength(0);
+    });
+
+    it('should be able to remove a existent tool', async () => {
+        const tool = await request(app)
+            .post('/tools')
+            .send({
+                "title": 'hotel',
+                "link": "https://github.com/typicode/hotel",
+                "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+                "tags": ["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+            });
+
+        const response = await request(app)
+            .delete(`/tools/${tool.body._id}`);
+
+        const tools = await request(app)
+            .get('/tools');
+
+        expect(response.status).toBe(204);
+        expect(Array.isArray(tools.body)).toBe(true);
+        expect(tools.body).toHaveLength(0);
+    });
+
+    it('should not be able to remove a inexistent tool', async () => {
+        const response = await request(app)
+            .delete('/tools/5eb83b0a09c5380915e333f2');
+
+        expect(response.status).toBe(400);
+        expect(response.body).toHaveProperty('message', 'tool not found');
+        expect(response.body).toHaveProperty('error', true);
+    });
+
+    it('should return a error when it is informed a invalid object id to remove tool', async () => {
+        const response = await request(app)
+            .delete('/tools/2');
+        
+        expect(response.status).toBe(400);
+        expect(response.body).toHaveProperty('error', true);
+        expect(response.body).toHaveProperty('message', 'invalid id');
     });
 
     beforeEach( async () => {

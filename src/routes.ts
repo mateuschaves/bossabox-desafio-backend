@@ -14,6 +14,7 @@ class Routes {
     initializeRoutes() {
         this.routes.post('/tools', ToolController.store);
         this.routes.get('/tools', ToolController.index);
+        this.routes.delete('/tools/:id', ToolController.destroy);
     }
 }
  

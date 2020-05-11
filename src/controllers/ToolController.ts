@@ -3,6 +3,8 @@ import {Request, Response} from 'express';
 
 import { Tool } from '../models';
 
+import { isValidObjectId } from 'mongoose';
+
 class ToolController {
     async store(request: Request, response: Response) {
         try {
@@ -36,6 +38,31 @@ class ToolController {
             }else {
                 const tools = await Tool.find() || [];
                 return response.status(200).json(tools);
+            }
+        } catch (error) {
+            return response.status(500).json(error);
+        }
+    }
+
+    async destroy(request: Request, response: Response) {
+        try {
+            const { id = 1 } = request.params;
+            if(isValidObjectId(id)){
+                const tool = await Tool.findById(id);
+                if(tool){
+                    await tool.remove();
+                    return response.status(204).json();
+                }else {
+                    return response.status(400).json({
+                        error: true,
+                        message: 'tool not found'
+                    });
+                }
+            }else {
+                return response.status(400).json({
+                    error: true,
+                    message: 'invalid id'
+                });
             }
         } catch (error) {
             return response.status(500).json(error);
