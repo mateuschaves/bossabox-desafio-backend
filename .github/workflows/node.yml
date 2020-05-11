@@ -36,3 +36,5 @@ jobs:
     - run: npm test
     env:
       CI: true
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      DATABASE_USER:  ${{ secrets.DATABASE_USER }}

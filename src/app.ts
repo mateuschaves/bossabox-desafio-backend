@@ -23,13 +23,24 @@ class App {
   }
 
   connectToMongo() {
-    mongoose.connect('mongodb://db:27017/VUTTR', {  
+    if(process.env.CI){
+      mongoose.connect(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0-4hmfs.mongodb.net/test?retryWrites=true&w=majority`, {  
         autoIndex: false,
         autoReconnect: false,
         connectTimeoutMS: 10000,
         useNewUrlParser: true 
-    })
-      .catch( error => console.log(error));
+      })
+        .catch( error => console.log(error));
+    }else {
+      mongoose.connect('mongodb://db:27017/VUTTR', {  
+        autoIndex: false,
+        autoReconnect: false,
+        connectTimeoutMS: 10000,
+        useNewUrlParser: true 
+      })
+        .catch( error => console.log(error));
+    }
+   
   }
 
   routes() {
