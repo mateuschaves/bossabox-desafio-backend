@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export default interface IRepository  extends Document {
+export default interface ITool  extends Document {
     title: string;
     link: string;
     description: string;

@@ -1,5 +1,5 @@
-import RepositoryController from './RepositoryController';
+import ToolController from './ToolController';
 
 export {
-    RepositoryController
+    ToolController
 }

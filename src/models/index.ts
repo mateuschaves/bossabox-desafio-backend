@@ -1,5 +1,5 @@
-import Repository from './Repository';
+import Tool from './Tool';
 
 export {
-    Repository
+    Tool
 }

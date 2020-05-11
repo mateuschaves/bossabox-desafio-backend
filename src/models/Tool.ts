@@ -1,9 +1,9 @@
 
 import { Schema, model } from 'mongoose';
 
-import { IRepository } from '../interfaces'
+import { ITool } from '../interfaces'
 
-const RepositorySchema = new Schema({
+const ToolSchema = new Schema({
     title: String,
     link: String,
     description: String,
@@ -18,4 +18,4 @@ const RepositorySchema = new Schema({
     }
 });
 
-export default model<IRepository>("Repository", RepositorySchema);
+export default model<ITool>("Tool", ToolSchema);

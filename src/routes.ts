@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { RepositoryController } from './controllers';
+import { ToolController } from './controllers';
   
 class Routes {
 
@@ -12,8 +12,8 @@ class Routes {
     }
 
     initializeRoutes() {
-        this.routes.post('/tools', RepositoryController.store);
-        this.routes.get('/tools', RepositoryController.index);
+        this.routes.post('/tools', ToolController.store);
+        this.routes.get('/tools', ToolController.index);
     }
 }
  

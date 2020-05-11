@@ -1,5 +1,5 @@
-import IRepository from './IRepository';
+import ITool from './ITool';
 
 export {
-    IRepository
+    ITool
 }
