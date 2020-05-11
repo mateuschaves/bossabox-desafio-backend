@@ -1,6 +1,8 @@
 import request from 'supertest';
 import app from '../../src/app';
 
+import mongoose from 'mongoose';
+
 describe('Repository', () => {
     it('should be able to register a repository', async () => {
         const response = await request(app)
@@ -30,4 +32,19 @@ describe('Repository', () => {
         expect(response.body).toHaveProperty('message', 'fill all required fields');
         expect(response.body).toHaveProperty('error');
     });
+
+    beforeEach( async () => {
+        return new Promise( async (resolve, reject) => {
+            const connection = await mongoose.connection.db;
+            if(!connection) return resolve(true);
+            const collections = await connection.collections();
+            Promise.all(
+                collections.map(collection => collection.drop())
+            )
+                .then(() => resolve(true))
+                .catch(() => reject(false));
+        })
+    });
+
+    afterAll( async () => await mongoose.connection.close() );
 });
