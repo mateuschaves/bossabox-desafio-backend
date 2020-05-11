@@ -12,8 +12,8 @@ class Routes {
     }
 
     initializeRoutes() {
-        this.routes.post('/repository', RepositoryController.store);
-        this.routes.get('/repository', RepositoryController.index);
+        this.routes.post('/tools', RepositoryController.store);
+        this.routes.get('/tools', RepositoryController.index);
     }
 }
  

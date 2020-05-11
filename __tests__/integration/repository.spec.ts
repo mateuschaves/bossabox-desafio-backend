@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 describe('Repository', () => {
     it('should be able to register a repository', async () => {
         const response = await request(app)
-            .post('/repository')
+            .post('/tools')
             .send({
                 "title": 'hotel',
                 "link": "https://github.com/typicode/hotel",
@@ -23,7 +23,7 @@ describe('Repository', () => {
 
     it('should not be able to register a repository', async () => {
         const response = await request(app)
-            .post('/repository')
+            .post('/tools')
             .send({
                 title: 'hotel'
             });
@@ -43,11 +43,11 @@ describe('Repository', () => {
         }
 
         await request(app)
-            .post('/repository')
+            .post('/tools')
             .send(repository);
 
         const response = await request(app)
-            .get('/repository');
+            .get('/tools');
 
         expect(response.status).toBe(200);
         expect(Array.isArray(response.body)).toBe(true);
@@ -61,7 +61,7 @@ describe('Repository', () => {
 
     it('should not list repositories if there is no one registered', async () => {
         const response = await request(app)
-            .get('/repository');
+            .get('/tools');
 
         expect(response.status).toBe(200);
         expect(Array.isArray(response.body)).toBe(true);
