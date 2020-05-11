@@ -46,7 +46,7 @@ describe('Tools', () => {
 
     it('should be able to list all tools registered', async () => {
 
-        const repository = {
+        const tool = {
             "title": 'hotel',
             "link": "https://github.com/typicode/hotel",
             "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
@@ -55,7 +55,7 @@ describe('Tools', () => {
 
         await request(app)
             .post('/tools')
-            .send(repository);
+            .send(tool);
 
         const response = await request(app)
             .get('/tools');
@@ -64,10 +64,10 @@ describe('Tools', () => {
         expect(Array.isArray(response.body)).toBe(true);
         expect(response.body).toHaveLength(1);
         const [ firstElement ] =  response.body;
-        expect(firstElement).toHaveProperty('title', repository.title);
-        expect(firstElement).toHaveProperty('link', repository.link);
-        expect(firstElement).toHaveProperty('description', repository.description);
-        expect(firstElement).toHaveProperty('tags', repository.tags);
+        expect(firstElement).toHaveProperty('title', tool.title);
+        expect(firstElement).toHaveProperty('link', tool.link);
+        expect(firstElement).toHaveProperty('description', tool.description);
+        expect(firstElement).toHaveProperty('tags', tool.tags);
     });
 
     it('should not list tools if there is no one registered', async () => {
@@ -80,14 +80,14 @@ describe('Tools', () => {
     });
 
     it('should be able to filter only one tool by tag name between two tools registered', async () => {
-        const firstRepository = {
+        const firstTool = {
             "title": 'hotel',
             "link": "https://github.com/typicode/hotel",
             "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
             "tags": ["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
         }
 
-        const secondRepository = {
+        const secondTool = {
             "title": 'bossabox-desafio-backend',
             "link": "https://github.com/mateuschaves/bossabox-desafio-backend",
             "description": "Sua tarefa é construir uma API e banco de dados para a aplicação VUTTR (Very Useful Tools to Remember). A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. Utilize um repositório Git (público, de preferência) para versionamento e disponibilização do código.",
@@ -96,11 +96,11 @@ describe('Tools', () => {
 
         await request(app)
             .post('/tools')
-            .send(firstRepository);
+            .send(firstTool);
 
         await request(app)
             .post('/tools')
-            .send(secondRepository);
+            .send(secondTool);
 
         const response = await request(app)
             .get('/tools')
@@ -112,10 +112,10 @@ describe('Tools', () => {
         expect(Array.isArray(response.body)).toBe(true);
         expect(response.body).toHaveLength(1);
         const [element] = response.body;
-        expect(element).toHaveProperty('title', secondRepository.title);
-        expect(element).toHaveProperty('link', secondRepository.link);
-        expect(element).toHaveProperty('description', secondRepository.description);
-        expect(element).toHaveProperty('tags', secondRepository.tags);
+        expect(element).toHaveProperty('title', secondTool.title);
+        expect(element).toHaveProperty('link', secondTool.link);
+        expect(element).toHaveProperty('description', secondTool.description);
+        expect(element).toHaveProperty('tags', secondTool.tags);
     });
 
     it('should be able to filter only two tool by tag name between two tools registered', async () => {

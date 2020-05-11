@@ -29,13 +29,13 @@ class ToolController {
         try {
             const tag: string = request.query.tag as string;
             if(tag){
-                const repositories = await Tool.find({
+                const tools = await Tool.find({
                     tags: tag
                 }) || [];
-                return response.status(200).json(repositories);
+                return response.status(200).json(tools);
             }else {
-                const repositories = await Tool.find() || [];
-                return response.status(200).json(repositories);
+                const tools = await Tool.find() || [];
+                return response.status(200).json(tools);
             }
         } catch (error) {
             return response.status(500).json(error);
