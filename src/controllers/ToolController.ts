@@ -53,7 +53,7 @@ class ToolController {
                     await tool.remove();
                     return response.status(204).json();
                 }else {
-                    return response.status(400).json({
+                    return response.status(404).json({
                         error: true,
                         message: 'tool not found'
                     });
