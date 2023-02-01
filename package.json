@@ -25,6 +25,6 @@
     "express": "^4.17.1",
     "factory-girl": "^5.0.4",
     "faker": "^4.1.0",
-    "mongoose": "^5.9.13"
+    "mongoose": "^5.13.15"
   }
 }
